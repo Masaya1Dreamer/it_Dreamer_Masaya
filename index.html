@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bookshelf | カンタン！あなたのオンライン本棚</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <!-- 自サイトのCSS -->
+    <link rel="stylesheet" href="main.css">
+    
+  </head>
+  <body>
+    <h1>Book Finder</h1>
+    <input id="search" placeholder="Title or Author">
+    <button id="button" type="button">Click Me</button>
+    <div id="results"></div>
+    
+    <!-- ログイン画面 -->
+    <section id="login" class="view">
+      <div class="container">
+        <form id="login-form" class="form-horizontal">
+          <div class="form-group login__email">
+            <label for="login-email" class="col-sm-3 control-label"
+              >メールアドレス</label
+            >
+            <div class="col-sm-9">
+              <input
+                type="email"
+                class="form-control"
+                id="login-email"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group login__password">
+            <label for="login-password" class="col-sm-3 control-label"
+              >パスワード</label
+            >
+            <div class="col-sm-9">
+              <input
+                type="password"
+                class="form-control"
+                id="login-password"
+                required
+              />
+              <p class="help-block"></p>
+            </div>
+          </div>
+
+          <div
+            class="col-sm-offset-3 col-sm-9 alert alert-danger login__help"
+          ></div>
+          <div class="form-group login__submit">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button
+                type="submit"
+                class="btn btn-primary login__submit-button"
+              >
+                ログイン
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- /#login -->
+
+    <!-- 書籍一覧画面 -->
+    <section id="bookshelf" class="view">
+      <header>
+        <div id="header">
+          <div id="logo">
+            <a href="./index.html">
+              <img src="logo.png" alt="Bookshelf" />
+            </a>
+          </div>
+          <a href="#addBookModal" data-toggle="modal" class="add-button">
+            <span
+              class="glyphicon glyphicon-plus-sign add-button__icon"
+              aria-hidden="true"
+            ></span>
+            書籍の登録
+          </a>
+          <button class="btn btn-primary logout-button">
+            ログアウト
+          </button>
+        </div>
+      </header>
+      <div id="cover">
+        <h1 id="cover__title">【人生を変えた】あなたのオンライン本棚</h1>
+      </div>
+      <div class="wrapper">
+        <div id="main">
+          <div id="book-list" class="clearfix"></div>
+        </div>
+      </div>
+    </section>
+    <!-- /#bookshelf -->
+
+    <div id="book-template">
+      <!-- 書籍のテンプレート -->
+      <div class="book-item">
+        <div class="book-item__image-wrapper">
+          <img class="book-item__image" alt="" />
+        </div>
+        <div class="book-item__detail">
+          <div class="book-item__title"></div>
+          <div class="book-item__delete-wrapper">
+            <button class="btn btn-danger book-item__delete">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              削除
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- /.book-item -->
+    </div>
+
+    <!-- 書籍情報追加モーダル -->
+    <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">書籍の登録</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="book-form">
+              <div class="form-group">
+                <label for="add-book-title" class="col-sm-3 control-label"
+                  >タイトル</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="add-book-title"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="add-book-image" class="col-sm-3 control-label"
+                  >表紙画像</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.gif, image/jpeg,image/png,image/gif"
+                    class="form-control"
+                    id="add-book-image"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                  <button
+                    type="submit"
+                    class="btn btn-default btn-success btn-block"
+                    id="submit_add_book"
+                  >
+                    保存する
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /#addBookModal -->
+
+    <!-- Firebaseのセットアップコード（以下のSDKのバージョンは3.2.1） -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <!-- apiKeyなどは、ご自身の環境のものに合わせてください -->
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDM-lur0S67yu7OddUkJCDoUsJVz_k3PMk",
+        authDomain: "my-life-changing-bookshelf.firebaseapp.com",
+        databaseURL: "https://my-life-changing-bookshelf.firebaseio.com",
+        storageBucket: "my-life-changing-bookshelf.appspot.com",
+      }
+      firebase.initializeApp(config)
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
