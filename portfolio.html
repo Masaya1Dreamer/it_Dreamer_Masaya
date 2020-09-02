@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bookshelf | カンタン！あなたのオンライン本棚</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <!-- 自サイトのCSS -->
+    <link rel="stylesheet" href="main.css" />
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+    <!-- 書籍一覧画面 -->
+    <section id="bookshelf" class="view">
+      <header>
+        <div id="header">
+          <div id="logo">
+            <a href="./index.html">
+              <img src="logo.png" alt="Bookshelf" />
+            </a>
+          </div>
+          <a href="#addBookModal" data-toggle="modal" class="add-button">
+            <span
+              class="glyphicon glyphicon-plus-sign add-button__icon"
+              aria-hidden="true"
+            ></span>
+            書籍の登録
+          </a>
+          <a href="./index.html">
+            <button id="login-button" class="btn btn-danger logout-button">
+              ログイン
+            </button>
+          </a>
+          <button class="btn btn-primary logout-button">
+            ログアウト
+          </button>
+        </div>
+      </header>
+      <div id="cover">
+        <h1 id="cover__title">【人生を変えた】あなたのオンライン本棚</h1>
+      </div>
+      <div class="wrapper">
+        <div id="main">
+          <div id="book-list" class="clearfix">
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="6.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  7つの習慣
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="2.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  沈黙のWebライティング
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="3.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  沈黙のWebマーケティング
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="item_book_4.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  詳しい解説付き！HTML5
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="5.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  論語と算盤
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="8.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  お金の大学
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="book-item__image-wrapper">
+                <img
+                  class="book-item__image"
+                  alt=""
+                  src="7.jpg"
+                />
+              </div>
+              <div class="book-item__detail">
+                <div class="book-item__title">
+                  「やりたいこと」の見つけ方
+                </div>
+                <div class="book-item__delete-wrapper">
+                  <button class="btn btn-danger book-item__delete">
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      aria-hidden="true"
+                    ></span>
+                    削除
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /#bookshelf -->
+    <!-- Firebaseのセットアップコード（以下のSDKのバージョンは3.2.1） -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <!-- apiKeyなどは、ご自身の環境のものに合わせてください -->
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDM-lur0S67yu7OddUkJCDoUsJVz_k3PMk",
+        authDomain: "my-life-changing-bookshelf.firebaseapp.com",
+        databaseURL: "https://my-life-changing-bookshelf.firebaseio.com",
+        storageBucket: "my-life-changing-bookshelf.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+</html>
